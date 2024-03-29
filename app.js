@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const shortid = require('shortid');
-//'mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort'
 
-mongoose.connect(process.env.MONGODB_URL)
+
+mongoose.connect('mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort')
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log('MongoDB Connection Error:', err));
 
@@ -19,6 +19,10 @@ let Data = mongoose.model('Data', urlSchema);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/',(req,res) =>{
+  res.send("Hello World")
+})
 
 app.post('/api/url/create', (req, res) => {
   let fullurl = req.body.url;
