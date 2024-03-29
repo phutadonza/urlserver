@@ -17,7 +17,18 @@ git clone https://github.com/phutadonza/urlserver.git
 cd urlserver
 npm install
 ```
+## แก้ไขโค้ด
+### บรรทัดที่ 7 ในไฟล์ app.js
+```
+const db = 'url ของ Mongodb'
+```
+### และบรรทัดที่ 4
+```
+let shorturl = `'localhost ของ backend'/${result.Short_url}`;
+```
 ## ใช้คำสั่ง `npm start` เพื่อ runserver
 ```
 npm start 
 ```
+# repository ของ Frontend
+# [https://github.com/phutadonza/urlserver.git]
