@@ -45,7 +45,7 @@ app.post('/api/url/create', (req, res) => {
       res.status(500).send(false);
     });
 
-  Data.updateOne({ Short_url: shortID }, { $inc: { count: 1 } })
+  Data.updateOne({ Short_url: shortID }, { $inc: { count: 0 } })
     .then(result => console.log("Count updated"))
     .catch(err => console.error("Error updating count:", err));
 });
@@ -66,7 +66,7 @@ app.post('/api/url/delete', (req, res) => {
 app.get('/:shorturl', (req, res) => {
   const shorturl = req.params.shorturl
   
-  Data.findOneAndUpdate({ Short_url: shorturl }, { $inc: { count: 1 } }, { new: true }) // เพิ่มค่า count และให้ค่าใหม่ส่งกลับ
+  Data.findOneAndUpdate({ Short_url: shorturl }, { $inc: { count: 1 } }, { new: true })
     .then(result => {
       if (!result) {
         return res.status(404).send('URL not found');
