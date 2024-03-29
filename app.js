@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const shortid = require('shortid');
 //'mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort'
 
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL||'mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort')
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log('MongoDB Connection Error:', err));
 
