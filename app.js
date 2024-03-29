@@ -1,3 +1,4 @@
+const dotenv = require('dotenv')
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -38,7 +39,6 @@ app.post('/api/url/create', (req, res) => {
       res.status(500).send(false);
     });
 
-  // เพิ่มค่า count ให้ URL ที่ถูกสร้าง
   Data.updateOne({ Short_url: shortID }, { $inc: { count: 1 } })
     .then(result => console.log("Count updated"))
     .catch(err => console.error("Error updating count:", err));
@@ -57,9 +57,8 @@ app.post('/api/url/delete', (req, res) => {
     });
 });
 
-// เส้นทางสำหรับการเรียกข้อมูลจาก Short URL
 app.get('/:shorturl', (req, res) => {
-  const shorturl = req.params.shorturl;
+  const shorturl = req.params.shorturl
   
   Data.findOneAndUpdate({ Short_url: shorturl }, { $inc: { count: 1 } }, { new: true }) // เพิ่มค่า count และให้ค่าใหม่ส่งกลับ
     .then(result => {
@@ -79,14 +78,14 @@ app.get('/api/url/data', (req, res) => {
   Data.find()
     .then(data => {
       console.log(data)
-      res.json(data); // ส่งข้อมูลทั้งหมดในฐานข้อมูลกลับไปที่ Frontend
+      res.json(data);
     })
     .catch(err => {
       console.error(err);
       res.status(500).send('Internal Server Error');
     });
 });
-
-app.listen(5000, () => {
+const port = process.env.PORT||5000
+app.listen(port, () => {
   console.log('Server started successfully');
 });
