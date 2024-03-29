@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const shortid = require('shortid');
+//'mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort'
 
-mongoose.connect('mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort')
+mongoose.connect(process.env.MONGODB_URL)
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log('MongoDB Connection Error:', err));
 
