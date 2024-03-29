@@ -37,7 +37,7 @@ app.post('/api/url/create', (req, res) => {
   
   Data.create(data)
     .then(result => {
-      let shorturl = `http://localhost:5000/${result.Short_url}`;
+      let shorturl = `https://server-phutadon.azurewebsites.net/${result.Short_url}`;
       res.json({ shorturl });
     })
     .catch(err => {
@@ -59,7 +59,7 @@ app.post('/api/url/delete', (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send("Internal Server Error Delete");
     });
 });
 
@@ -76,7 +76,7 @@ app.get('/:shorturl', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).send('Internal Server Error');
+      res.status(500).send('Internal Server Error shorturl or count');
     });
 });
 
@@ -88,7 +88,7 @@ app.get('/api/url/data', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).send('Internal Server Error');
+      res.status(500).send('Internal Server Error data');
     });
 });
 const port = process.env.PORT||5000
