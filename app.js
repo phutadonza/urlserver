@@ -83,7 +83,7 @@ app.get('/:shorturl', (req, res) => {
 app.get('/api/url/data', (req, res) => {
   Data.find()
     .then(data => {
-      console.log(data)
+      //console.log(data)
       res.json(data);
     })
     .catch(err => {
