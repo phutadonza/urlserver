@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 const db = 'mongodb+srv://root:1234@url.bxubhmg.mongodb.net/urlshort'
+const frontn = 'https://server-phutadon.azurewebsites.net/'
 
 mongoose.connect(process.env.MONGODB_URL||db)
 .then(() => console.log('MongoDB Connected'))
@@ -37,7 +38,7 @@ app.post('/api/url/create', (req, res) => {
   
   Data.create(data)
     .then(result => {
-      let shorturl = `https://server-phutadon.azurewebsites.net/${result.Short_url}`;
+      let shorturl = frontn + `/${result.Short_url}`;
       res.json({ shorturl });
     })
     .catch(err => {
