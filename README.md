@@ -20,11 +20,11 @@ npm install
 ## แก้ไขโค้ด
 ### บรรทัดที่ 7 ในไฟล์ app.js
 ```
-const db = 'url ของ Mongodb'
+const db = 'url database ของ Mongodb'
 ```
-### และบรรทัดที่ 4
+### และบรรทัดที่ 8
 ```
-let shorturl = `'localhost ของ backend'/${result.Short_url}`;
+const frontn = 'localhost ของ front';
 ```
 ## ใช้คำสั่ง `npm start` เพื่อ runserver
 ```
